@@ -16,5 +16,6 @@ pydantic
 httpx
 tiktoken
 edge-tts             
-streamlit-audiorecorder
+python-multipart
+streamlit-mic-recorder
 beautifulsoup4       
