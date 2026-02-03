@@ -1,4 +1,4 @@
-from typing import Any, TypedDict, List, Optional
+from typing import TypedDict, List, Optional, Any
 from langgraph.graph import StateGraph, END, START
 from langchain_groq import ChatGroq
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
@@ -6,23 +6,27 @@ from app.core.prompts import INTERVIEWER_SYSTEM_PROMPT
 from app.core.sandbox import execute_code
 import os
 
+from dotenv import load_dotenv
+load_dotenv() 
+
 # 1. Define the State
 class InterviewState(TypedDict):
-    messages: List[Any]       # Chat history
-    candidate_role: str       # Job role
-    resume_context: str       # Resume data
-    question_count: int       # Tracker
-    code_snippet: Optional[str] # User's code
-    code_output: Optional[str]  # Result from Piston API
+    messages: List[Any]
+    candidate_role: str
+    resume_context: str
+    question_count: int
+    code_snippet: Optional[str]
+    code_output: Optional[str]
 
-# 2. Initialize Groq LLM
-if not os.getenv("GROQ_API_KEY"):
-    raise ValueError("GROQ_API_KEY is not set in .env file")
+# 2. Initialize Groq LLM (Now safely checks for the key)
+api_key = os.getenv("GROQ_API_KEY")
+if not api_key:
+    raise ValueError("GROQ_API_KEY is missing! Please check your .env file.")
 
 llm = ChatGroq(
     temperature=0.6,
-    model_name="llama-3.3-70b-versatile", # Reliable, fast model
-    groq_api_key=os.getenv("GROQ_API_KEY")
+    model_name="llama-3.3-70b-versatile",
+    groq_api_key=api_key
 )
 
 # 3. Nodes
