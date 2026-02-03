@@ -70,56 +70,70 @@ Unlike standard chatbots, this agent provides a complete assessment environment:
 ## ⚙️ Installation & Setup
 
 ### 1. Prerequisites
-* Python 3.10 or higher
-* An API Key from [Groq Console](https://console.groq.com/) (Free tier available)
+- Python 3.10 or higher
+- An API Key from the Groq Console (Free tier available)
 
 ### 2. Set Up Environment Variables
-Create a `.env` file in the root directory of the project and add your API key:
+
+Create a `.env` file in the root directory and add:
+
 ```ini
-# .env file
 GROQ_API_KEY=gsk_your_actual_api_key_here_xxxxxxxxxxxxxx
 ```
 
-### 3. Install Dependencies
+---
+
+## 3. Install Dependencies
+
 Open your terminal in the project folder and run the following commands. It is recommended to use a virtual environment.
 
-Windows:
-
-Bash
+### Windows
+```bash
 python -m venv .venv
-.\.venv\Scriptsctivate
+.\.venv\Scripts\activate
 pip install -r requirements.txt
+```
 
-Mac/Linux:
-
-Bash
+### Mac/Linux
+```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+```
 
-🚀 How to Run
-To run the application, you need to start the Backend and Frontend in two separate terminals.
+---
 
-Terminal 1: Start the Backend (API)
-This handles the AI logic, database, and audio processing.
+## 🚀 How to Run
 
-Bash
+You must start the Backend and Frontend in two separate terminals.
+
+### Terminal 1: Start the Backend (API)
+
+```bash
 # Make sure your virtual environment is active
 python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8001
+```
 
-Wait until you see: INFO: Application startup complete.
+Wait until you see:
+```
+INFO: Application startup complete.
+```
 
-Terminal 2: Start the Frontend (UI)
-This launches the web interface.
+### Terminal 2: Start the Frontend (UI)
 
-Bash
+```bash
 # Make sure your virtual environment is active
 python -m streamlit run frontend/ui.py
+```
 
-The app should automatically open in your browser at http://localhost:8501.
+The app will open automatically at:
+http://localhost:8501
 
-📂 Project Structure
-Plaintext
+---
+
+## 📂 Project Structure
+
+```text
 smart-mock-ai/
 ├── app/
 │   ├── core/
@@ -131,35 +145,35 @@ smart-mock-ai/
 │   └── prompts.py          # System prompts for the AI Persona
 ├── frontend/
 │   └── ui.py               # Streamlit Dashboard & Client Logic
-├── output/                 # Screenshots for README (Create this folder)
-│   ├── Dashboard.png
-│   ├── Text_Input_1.png
-│   ├── Voice_answer_3.png
-│   ├── Voice_answer_4.png
-│   ├── Code_Sandbox_1.png
-│   └── Code_Sandbox_2.png
 ├── .env                    # API Keys (Keep this private!)
 ├── requirements.txt        # Python dependencies
 └── README.md               # Project Documentation
+```
 
-🔮 Future Enhancements
-📹 Video Analysis: Integrate computer vision to analyze eye contact, facial expressions, and body language during the interview.
+---
 
-📊 Detailed Feedback Report: Generate a comprehensive PDF report card at the end of the session, scoring the candidate on "Technical Accuracy," "Communication," and "Problem Solving."
+## 🔮 Future Enhancements
 
-🌍 Multi-Language Support: Allow the interviewer to conduct interviews in languages other than English.
+- 📹 Video analysis using computer vision
+- 📊 Detailed PDF feedback report
+- 🌍 Multi-language interview support
+- 🧩 Interactive system design whiteboard
 
-🧩 System Design Whiteboard: Add an interactive canvas for candidates to draw system architecture diagrams.
+---
 
-⚠️ Troubleshooting
-Error: "Transcription failed" / 500 Error on Voice:
-Verify you installed groq (pip install groq).
-Check that your .env file contains a valid GROQ_API_KEY.
-Ensure app/core/audio.py uses the model "whisper-large-v3-turbo".
+## ⚠️ Troubleshooting
 
-Error: "Connection Refused" / 404:
-Ensure the backend is running on port 8001.
-Check frontend/ui.py line API_URL = "http://127.0.0.1:8001".
+### Transcription failed / 500 Error
+- Ensure `groq` is installed
+- Check `.env` contains valid `GROQ_API_KEY`
+- Verify model: `whisper-large-v3-turbo`
 
-Sandbox Error:
-The code sandbox requires an active internet connection to reach the Piston execution engine.
+### Connection Refused / 404
+- Ensure backend runs on port **8001**
+- Verify in `frontend/ui.py`:
+```python
+API_URL = "http://127.0.0.1:8001"
+```
+
+### Sandbox Error
+- Requires active internet connection for Piston API
