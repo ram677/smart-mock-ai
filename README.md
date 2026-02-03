@@ -83,13 +83,12 @@ GROQ_API_KEY=gsk_your_actual_api_key_here_xxxxxxxxxxxxxx
 ### 3. Install Dependencies
 Open your terminal in the project folder and run the following commands. It is recommended to use a virtual environment.
 
-#### Windows:
-```ini
+Windows:
+
 Bash
 python -m venv .venv
 .\.venv\Scriptsctivate
 pip install -r requirements.txt
-```
 
 Mac/Linux:
 
