@@ -7,9 +7,9 @@ class Message(BaseModel):
 
 class ChatRequest(BaseModel):
     message: str
-    history: List[Dict[str, str]] = Field(default_factory=list) # List of {"role": "user", "content": "..."}
-    role: str = "Generative AI Engineer"
-    code_snippet: Optional[str] = None # Optional code input from the user
+    history: List[Dict] # Explicitly allow a list of dictionaries
+    role: str
+    code_snippet: Optional[str] = None
 
 class ChatResponse(BaseModel):
     response: str
