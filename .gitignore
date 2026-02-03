@@ -14,3 +14,10 @@ wheels/
 
 # IDE settings
 .vscode/
+
+# Database files
+chroma_db/
+
+# Temporary audio files
+temp_audio/
+temp_mic.wav
