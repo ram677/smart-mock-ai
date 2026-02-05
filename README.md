@@ -51,6 +51,7 @@ Unlike standard chatbots, this agent provides a complete assessment environment:
 * **Tab Switching Detection:** The system monitors focus events. If a candidate switches tabs (e.g., to Google an answer), the event is logged.
 * **Session Monitoring:** A visible "Proctor Status" badge ensures the candidate is aware of the active monitoring.
 
+![Anti-Cheat & Proctoring](output/Anti_Cheat_Proctoring.png)
 ---
 
 ## 🛠️ Tech Stack
